@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Practice - Will's Tutoring</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Practice</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="practice.html">Practice</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="container">
+    <h2>Practice - Biology</h2>
+<!-- this is a horrible way to do this haha -->
+      <div class="question" id="question1">
+        <p><strong>Question 1:</strong> Which organelle is responsible for producing ATP in a cell?</p>
+        <ul>
+          <li><input type="radio" name="q1" id="q1a" value="a"><label for="q1a">A. Nucleus</label></li>
+          <li><input type="radio" name="q1" id="q1b" value="b"><label for="q1b">B. Ribosome</label></li>
+          <li><input type="radio" name="q1" id="q1c" value="c"><label for="q1c">C. Mitochondrion</label></li>
+          <li><input type="radio" name="q1" id="q1d" value="d"><label for="q1d">D. Golgi apparatus</label></li>
+        </ul>
+        <button onclick="checkAnswer1()">Check Answer</button>
+        <p id="feedback1"></p>
+        <button id="nextBtn1" onclick="showQuestion2()" style="display:none;">Next Question</button>
+      </div>
+
+      <div class="question" id="question2" style="display:none;">
+        <p><strong>Question 2:</strong> What macromolecule are enzymes made of?</p>
+        <ul>
+          <li><input type="radio" name="q2" id="q2a" value="a"><label for="q2a">A. Lipids</label></li>
+          <li><input type="radio" name="q2" id="q2b" value="b"><label for="q2b">B. Carbohydrates</label></li>
+          <li><input type="radio" name="q2" id="q2c" value="c"><label for="q2c">C. Proteins</label></li>
+          <li><input type="radio" name="q2" id="q2d" value="d"><label for="q2d">D. Nucleic acids</label></li>
+        </ul>
+        <button onclick="checkAnswer2()">Check Answer</button>
+        <p id="feedback2"></p>
+        <button id="nextBtn2" onclick="showQuestion3()" style="display:none;">Next Question</button>
+      </div>
+
+      <div class="question" id="question3" style="display:none;">
+        <p><strong>Question 3:</strong> What are the products of glycolysis?</p>
+        <ul>
+          <li><input type="radio" name="q3" id="q3a" value="a"><label for="q3a">A. 2 pyruvate, 2 ATP (net), & 2 NADH</label></li>
+          <li><input type="radio" name="q3" id="q3b" value="b"><label for="q3b">B. 1 glucose, 4 ATP (net)</label></li>
+          <li><input type="radio" name="q3" id="q3c" value="c"><label for="q3c">C. 1 pyruvate, 2 ATP (net), & 2 NADH</label></li>
+          <li><input type="radio" name="q3" id="q3d" value="d"><label for="q3d">D. 16 ATP (net), 2 CO2</label></li>
+        </ul>
+        <button onclick="checkAnswer3()">Check Answer</button>
+        <p id="feedback3"></p>
+      </div>
+
+      <script>
+        function checkAnswer1() {
+          const answer = document.querySelector('input[name="q1"]:checked');
+          const feedback = document.getElementById("feedback1");
+          const nextBtn = document.getElementById("nextBtn1");
+
+          if (!answer) {
+            feedback.textContent = "Pick an answer.";
+            feedback.style.color = "red";
+            return;
+          }
+
+          if (answer.value === "c") {
+            feedback.textContent = "Correct. Mitochondrion makes ATP.";
+            feedback.style.color = "green";
+            nextBtn.style.display = "inline-block";
+          } else {
+            feedback.textContent = "Incorrect. It's the mitochondrion.";
+            feedback.style.color = "red";
+          }
+        }
+
+        function showQuestion2() {
+          document.getElementById("question2").style.display = "block";
+          document.getElementById("nextBtn1").style.display = "none";
+        }
+
+        function checkAnswer2() {
+          const answer = document.querySelector('input[name="q2"]:checked');
+          const feedback = document.getElementById("feedback2");
+          const nextBtn = document.getElementById("nextBtn2");
+
+          if (!answer) {
+            feedback.textContent = "Pick an answer.";
+            feedback.style.color = "red";
+            return;
+          }
+
+          if (answer.value === "c") {
+            feedback.textContent = "Correct. Enzymes are proteins.";
+            feedback.style.color = "green";
+            nextBtn.style.display = "inline-block";
+          } else {
+            feedback.textContent = "Incorrect. Enzymes are proteins.";
+            feedback.style.color = "red";
+          }
+        }
+
+        function showQuestion3() {
+          document.getElementById("question3").style.display = "block";
+          document.getElementById("nextBtn2").style.display = "none";
+        }
+
+        function checkAnswer3() {
+          const answer = document.querySelector('input[name="q3"]:checked');
+          const feedback = document.getElementById("feedback3");
+
+          if (!answer) {
+            feedback.textContent = "Pick an answer.";
+            feedback.style.color = "red";
+            return;
+          }
+          if (answer.value === "a") {
+            feedback.textContent = "Correct. Those are the products of glycolysis.";
+            feedback.style.color = "green";
+          } else {
+            feedback.textContent = "Incorrect. Those are not the products of glycolysis.";
+            feedback.style.color = "red";
+          }
+        }
+      </script>
+
+  </div>
+
+  <footer>
+    First lesson is free!
+  </footer>
+</body>
+</html>

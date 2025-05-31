@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Practice - Will's Tutoring</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Practice</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="practice.html">Practice</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="container">
+    <h2>Practice - Chemistry</h2>
+<!-- this is a horrible way to do this haha -->
+      <div class="question" id="question1">
+        <p><strong>Question 1:</strong> What is the orbital configuration of Carbon?</p>
+        <ul>
+          <li><input type="radio" name="q1" id="q1a" value="a"><label for="q1a">A. 1s<sup>2</sup>1p<sup>6</sup>2s<sup>2</sup></label></li>
+          <li><input type="radio" name="q1" id="q1b" value="b"><label for="q1b">B. 1s<sup>2</sup>2s<sup>2</sup>2p<sup>2</sup></label></li>
+          <li><input type="radio" name="q1" id="q1c" value="c"><label for="q1c">C. 1p<sup>2</sup>2p<sup>2</sup>2s<sup>2</sup></label></li>
+          <li><input type="radio" name="q1" id="q1d" value="d"><label for="q1d">D. 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>2</sup>2p<sup>2</sup></label></li>
+        </ul>
+        <button onclick="checkAnswer1()">Check Answer</button>
+        <p id="feedback1"></p>
+        <button id="nextBtn1" onclick="showQuestion2()" style="display:none;">Next Question</button>
+      </div>
+
+      <div class="question" id="question2" style="display:none;">
+        <p><strong>Question 2:</strong> Which of the follow is most correct name for the compound (C5H12OH) shown below?</p>
+        <img src="chem.png" alt="a pentane molecule with an alcohol group at C2">
+        <ul>
+          <li><input type="radio" name="q2" id="q2a" value="a"><label for="q2a">A. 1-hexanol</label></li>
+          <li><input type="radio" name="q2" id="q2b" value="b"><label for="q2b">B. pentanol</label></li>
+          <li><input type="radio" name="q2" id="q2c" value="c"><label for="q2c">C. 2-pentanol</label></li>
+          <li><input type="radio" name="q2" id="q2d" value="d"><label for="q2d">D. pentane-2-alcohol</label></li>
+        </ul>
+        <button onclick="checkAnswer2()">Check Answer</button>
+        <p id="feedback2"></p>
+        <button id="nextBtn2" onclick="showQuestion3()" style="display:none;">Next Question</button>
+      </div>
+
+      <div class="question" id="question3" style="display:none;">
+        <p><strong>Question 3:</strong> Is the following graph depicing an exothermic or an endothermic reaction?</p>
+        <img src="chem2.png" alt="A graph showing the total energy going from products A+B to product C. initially, the energy increases, but then drops below the initial energy of A+B.">
+        <ul>
+          <li><input type="radio" name="q3" id="q3a" value="a"><label for="q3a">A. Exothermic</label></li>
+          <li><input type="radio" name="q3" id="q3b" value="b"><label for="q3b">B. Endothermic</label></li>
+        </ul>
+        <button onclick="checkAnswer3()">Check Answer</button>
+        <p id="feedback3"></p>
+      </div>
+
+      <script>
+        function checkAnswer1() {
+          const answer = document.querySelector('input[name="q1"]:checked');
+          const feedback = document.getElementById("feedback1");
+          const nextBtn = document.getElementById("nextBtn1");
+
+          if (!answer) {
+            feedback.textContent = "Pick an answer.";
+            feedback.style.color = "red";
+            return;
+          }
+
+          if (answer.value === "b") {
+            feedback.textContent = "Correct. That is the orbital configuration of Carbon.";
+            feedback.style.color = "green";
+            nextBtn.style.display = "inline-block";
+          } else {
+            feedback.textContent = "Incorrect. That is not the orbital configuration of Carbon.";
+            feedback.style.color = "red";
+          }
+        }
+
+        function showQuestion2() {
+          document.getElementById("question2").style.display = "block";
+          document.getElementById("nextBtn1").style.display = "none";
+        }
+
+        function checkAnswer2() {
+          const answer = document.querySelector('input[name="q2"]:checked');
+          const feedback = document.getElementById("feedback2");
+          const nextBtn = document.getElementById("nextBtn2");
+
+          if (!answer) {
+            feedback.textContent = "Pick an answer.";
+            feedback.style.color = "red";
+            return;
+          }
+
+          if (answer.value === "c") {
+            feedback.textContent = "Correct. That is the most correct name for the compound.";
+            feedback.style.color = "green";
+            nextBtn.style.display = "inline-block";
+          } else {
+            feedback.textContent = "Incorrect. That is not the correct name for the compound.";
+            feedback.style.color = "red";
+          }
+        }
+
+        function showQuestion3() {
+          document.getElementById("question3").style.display = "block";
+          document.getElementById("nextBtn2").style.display = "none";
+        }
+
+        function checkAnswer3() {
+          const answer = document.querySelector('input[name="q3"]:checked');
+          const feedback = document.getElementById("feedback3");
+
+          if (!answer) {
+            feedback.textContent = "Pick an answer.";
+            feedback.style.color = "red";
+            return;
+          }
+          if (answer.value === "a") {
+            feedback.textContent = "Correct. The reaction is Exothermic.";
+            feedback.style.color = "green";
+          } else {
+            feedback.textContent = "Incorrect. The reaction is Exothermic";
+            feedback.style.color = "red";
+          }
+        }
+      </script>
+
+  </div>
+
+  <footer>
+    First lesson is free!
+  </footer>
+</body>
+</html>

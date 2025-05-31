@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Practice - Will's Tutoring</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Practice</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="practice.html">Practice</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="container">
+    <h2>Practice - Physics</h2>
+<!-- this is a horrible way to do this haha -->
+      <div class="question" id="question1">
+        <p><strong>Question 1:</strong> What is Newton's second law of motion?</p>
+        <ul>
+          <li><input type="radio" name="q1" id="q1a" value="a"><label for="q1a">A. An object at rest stays at rest, while an object in motion will stay in motion, unless it is acted upon by an external force</label></li>
+          <li><input type="radio" name="q1" id="q1b" value="b"><label for="q1b">B. For every action, there is an equal and opposite reaction</label></li>
+          <li><input type="radio" name="q1" id="q1c" value="c"><label for="q1c">C. The force, F, acting on an object is equal to the object's mass, m, multiplied by the object's acceleration, a (F=ma)</label></li>
+          <li><input type="radio" name="q1" id="q1d" value="d"><label for="q1d">D. Gravitational force always pulls objects downwards</label></li>
+        </ul>
+        <button onclick="checkAnswer1()">Check Answer</button>
+        <p id="feedback1"></p>
+        <button id="nextBtn1" onclick="showQuestion2()" style="display:none;">Next Question</button>
+      </div>
+
+      <div class="question" id="question2" style="display:none;">
+        <p><strong>Question 2:</strong> What is the frequency of a typical red laser with wavelength 650 nm (assume the speed of light is 3·10<sup>8</sup> m/s)?</p>
+        <ul>
+          <li><input type="radio" name="q2" id="q2a" value="a"><label for="q2a">A. 4.61·10<sup>14</sup> Hz</label></li>
+          <li><input type="radio" name="q2" id="q2b" value="b"><label for="q2b">B. 2.61·10<sup>14</sup> Hz</label></li>
+          <li><input type="radio" name="q2" id="q2c" value="c"><label for="q2c">C. 4.61·10<sup>5</sup> Hz</label></li>
+          <li><input type="radio" name="q2" id="q2d" value="d"><label for="q2d">D. 1.11·10<sup>8</sup> Hz</label></li>
+        </ul>
+        <button onclick="checkAnswer2()">Check Answer</button>
+        <p id="feedback2"></p>
+        <button id="nextBtn2" onclick="showQuestion3()" style="display:none;">Next Question</button>
+      </div>
+
+      <div class="question" id="question3" style="display:none;">
+        <p><strong>Question 3:</strong> If two charges, with charge q<sub>1</sub>=1.6·10<sup>-9</sup> C & q<sub>2</sub>=2.6·10<sup>-9</sup> C, are in line with each other in empty space, and are separated by a distance of 1 mm, what is the Force each charge is exerting on each other (assume Coulomb's constant, k, is 9·10<sup>9</sup> N·m<sup>2</sup>/C<sup>2</sup>)?</p>
+        <ul>
+          <li><input type="radio" name="q3" id="q3a" value="a"><label for="q3a">A. 1 N</label></li>
+          <li><input type="radio" name="q3" id="q3b" value="b"><label for="q3b">B. 3.74·10<sup>-8</sup> N</label></li>
+          <li><input type="radio" name="q3" id="q3c" value="c"><label for="q3c">C. 0.01 N</label></li>
+          <li><input type="radio" name="q3" id="q3d" value="d"><label for="q3d">D. 0.0374 N</label></li>
+        </ul>
+        <button onclick="checkAnswer3()">Check Answer</button>
+        <p id="feedback3"></p>
+      </div>
+
+      <script>
+        function checkAnswer1() {
+          const answer = document.querySelector('input[name="q1"]:checked');
+          const feedback = document.getElementById("feedback1");
+          const nextBtn = document.getElementById("nextBtn1");
+
+          if (!answer) {
+            feedback.textContent = "Pick an answer.";
+            feedback.style.color = "red";
+            return;
+          }
+
+          if (answer.value === "c") {
+            feedback.textContent = "Correct. F=ma is Newton's second law of motion.";
+            feedback.style.color = "green";
+            nextBtn.style.display = "inline-block";
+          } else {
+            feedback.textContent = "Incorrect. That is not Newton's second law of motion";
+            feedback.style.color = "red";
+          }
+        }
+
+        function showQuestion2() {
+          document.getElementById("question2").style.display = "block";
+          document.getElementById("nextBtn1").style.display = "none";
+        }
+
+        function checkAnswer2() {
+          const answer = document.querySelector('input[name="q2"]:checked');
+          const feedback = document.getElementById("feedback2");
+          const nextBtn = document.getElementById("nextBtn2");
+
+          if (!answer) {
+            feedback.textContent = "Pick an answer.";
+            feedback.style.color = "red";
+            return;
+          }
+
+          if (answer.value === "a") {
+            feedback.textContent = "Correct.";
+            feedback.style.color = "green";
+            nextBtn.style.display = "inline-block";
+          } else {
+            feedback.textContent = "Incorrect.";
+            feedback.style.color = "red";
+          }
+        }
+
+        function showQuestion3() {
+          document.getElementById("question3").style.display = "block";
+          document.getElementById("nextBtn2").style.display = "none";
+        }
+
+        function checkAnswer3() {
+          const answer = document.querySelector('input[name="q3"]:checked');
+          const feedback = document.getElementById("feedback3");
+
+          if (!answer) {
+            feedback.textContent = "Pick an answer.";
+            feedback.style.color = "red";
+            return;
+          }
+          if (answer.value === "d") {
+            feedback.textContent = "Correct.";
+            feedback.style.color = "green";
+          } else {
+            feedback.textContent = "Incorrect.";
+            feedback.style.color = "red";
+          }
+        }
+      </script>
+
+  </div>
+
+  <footer>
+    First lesson is free!
+  </footer>
+</body>
+</html>
